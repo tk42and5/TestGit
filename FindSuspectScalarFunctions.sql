@@ -55,7 +55,7 @@ INNER JOIN sys.all_objects objRef
 	ON dep.referencing_id = objRef.[object_id]
 INNER JOIN FunctionsThatUseObjects f
 	ON dep.referenced_id = f.[object_id]	
--- Stored Procs, Scalar, Inline Table-valued, and Table-valued Functions, CLR Stored Proc
+-- Stored Procs and Views that use the suspect scalar UDF
 WHERE objRef.type IN ('P', 'V')
   AND dep.referencing_id != dep.referenced_id
 ;
